@@ -15,6 +15,11 @@ app.listen(8080, function () {
   console.log('Listening on port 8080');
 });
 
+app.get('/', function(req,res){
+  res.send("Hello World");
+
+});
+
 //Get messages from Twilio Webhook
 app.post('/mushu', function(req,res){
   var message = req.body.message;
