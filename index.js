@@ -11,8 +11,8 @@ var status = 'MORNINGSENT'
 beginDay();
 
 //Listen on Appropriate port
-app.listen(8080, function () {
-  console.log('Listening on port 8080');
+app.listen(process.env.PORT, function () {
+  console.log('WOOT!');
 });
 
 app.get('/', function(req,res){
