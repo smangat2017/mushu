@@ -13,5 +13,8 @@
     "node-schedule": "^1.1.0",
     "request": "^2.69.0",
     "twilio": "^2.9.0"
+  },
+  "devDependencies": {
+    "flightplan": "^0.6.13"
   }
 }

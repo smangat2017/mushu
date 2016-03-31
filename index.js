@@ -11,9 +11,8 @@ var status = 'MORNINGSENT'
 beginDay();
 
 //Listen on Appropriate port
-app.listen(process.env.PORT, function () {
-  console.log('WOOT!');
-});
+app.set('port', process.env.PORT || 8080);
+app.listen(app.get('port'));
 
 app.get('/', function(req,res){
   res.send("Hello World");
@@ -21,9 +20,9 @@ app.get('/', function(req,res){
 });
 
 //Get messages from Twilio Webhook
-app.post('/mushu', function(req,res){
+app.post('/api', function(req,res){
   var message = req.body.message;
-  var response = processInput(text);
+  var response = processInput(message);
   sendText(response);
   res.send(200);
 });
@@ -36,7 +35,7 @@ function processInput(text){
 //Start the day off with a good morning!
 function beginDay(){
   var rule = new schedule.RecurrenceRule();
-  rule.hour = 17;
+  rule.hour = 10;
   rule.minute = 4;
   var j = schedule.scheduleJob(rule, function(){
     sendText("Good Morning Simar! :)");
